@@ -30,7 +30,7 @@ paths:
                 $ref: '#/components/schemas/Version'
       operationId: get-version
       description: BCDiceのバージョンとBCDice APIサーバのバージョンを返します。
-  /system:
+  /systems:
     get:
       summary: ゲームシステムID一覧
       tags:
@@ -42,8 +42,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SystemList'
-      operationId: get-system
+      operationId: list-systems
       description: ゲームシステムIDの一覧を返します。ゲームシステムIDとは、各ダイスボットが `gameType()` で返す文字列です。
+    parameters: []
 components:
   schemas:
     Version:
