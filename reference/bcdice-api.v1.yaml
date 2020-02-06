@@ -65,6 +65,19 @@ components:
       properties:
         system:
           type: array
+          description: ゲームシステムIDの配列
+          example:
+            - Amadeus
+            - Cthulhu
+            - DoubleCross
+            - DungeonsAndDoragons
+            - DiceBot
+            - Gorilla
+            - Gundog
+            - LogHorizon
+            - Nechronica
+            - SwordWorld2.0
+          uniqueItems: true
           items:
             type: string
       required:
