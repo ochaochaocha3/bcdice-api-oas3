@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: BCDice API
+  version: '1.0'
+  description: BCDiceのWeb API
+  contact:
+    name: BCDice Discordサーバ
+    url: 'https://discord.gg/x5MMKWA'
+  license:
+    name: MIT
+    url: 'https://github.com/ysakasin/bcdice-api/blob/master/LICENSE'
+servers:
+  - url: 'https://{server}/v1'
+paths:
+  /version:
+    get:
+      summary: バージョン情報
+      tags:
+        - generalInfo
+      responses:
+        '200':
+          description: BCDiceのバージョンとBCDice APIサーバのバージョン
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+      operationId: get-version
+      description: BCDiceのバージョンとBCDice APIサーバのバージョンを返します。
+  /system:
+    get:
+      summary: ゲームシステムID一覧
+      tags:
+        - generalInfo
+      responses:
+        '200':
+          description: ゲームシステムIDの一覧
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemList'
+      operationId: get-system
+      description: ゲームシステムIDの一覧を返します。ゲームシステムIDとは、各ダイスボットが `gameType()` で返す文字列です。
+components:
+  schemas:
+    Version:
+      title: Version
+      type: object
+      description: BCDiceおよびBCDice APIのバージョン情報
+      properties:
+        bcdice:
+          type: string
+          example: 2.04.03
+          description: BCDiceのバージョン
+        api:
+          type: string
+          example: 1.0.0
+          description: BCDice APIサーバのバージョン
+      required:
+        - bcdice
+        - api
+    SystemList:
+      title: SystemList
+      type: object
+      description: ゲームシステムIDの一覧
+      properties:
+        system:
+          type: array
+          items:
+            type: string
+      required:
+        - system
+tags:
+  - name: generalInfo
+    description: BCDice全体についての情報
