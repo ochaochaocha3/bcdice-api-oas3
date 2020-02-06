@@ -10,7 +10,11 @@ info:
     name: MIT
     url: 'https://github.com/ysakasin/bcdice-api/blob/master/LICENSE'
 servers:
-  - url: 'https://{server}/v1'
+  - url: '{server}/v1'
+    variables:
+      server:
+        description: BCDice APIサーバ
+        default: 'https://bcdice.herokuapp.com'
 paths:
   /version:
     get:
