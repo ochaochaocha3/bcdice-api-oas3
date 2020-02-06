@@ -53,8 +53,8 @@ components:
       properties:
         bcdice:
           type: string
-          example: 2.04.03
           description: BCDiceのバージョン
+          example: 2.03.04
         api:
           type: string
           example: 1.0.0
