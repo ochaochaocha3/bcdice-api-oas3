@@ -45,6 +45,21 @@ paths:
       operationId: list-systems
       description: ゲームシステムIDの一覧を返します。ゲームシステムIDとは、各ダイスボットが `gameType()` で返す文字列です。
     parameters: []
+  /names:
+    get:
+      summary: ゲームシステムIDとゲームシステム名の一覧
+      tags:
+        - generalInfo
+      responses:
+        '200':
+          description: ゲームシステムIDとゲームシステム名の一覧
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemIDNameList'
+      operationId: get-names
+      description: ゲームシステムIDとゲームシステム名の一覧を返します。
+    parameters: []
 components:
   schemas:
     Version:
@@ -71,6 +86,9 @@ components:
         system:
           type: array
           description: ゲームシステムIDの配列
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/SystemID'
           example:
             - Amadeus
             - Cthulhu
@@ -82,11 +100,63 @@ components:
             - LogHorizon
             - Nechronica
             - SwordWorld2.0
-          uniqueItems: true
-          items:
-            type: string
       required:
         - system
+    SystemIDName:
+      title: SystemIDName
+      type: object
+      description: ゲームシステムIDとゲームシステム名の組
+      properties:
+        system:
+          $ref: '#/components/schemas/SystemID'
+        name:
+          $ref: '#/components/schemas/SystemName'
+      required:
+        - system
+        - name
+    SystemIDNameList:
+      title: SystemIDNameList
+      type: object
+      description: ゲームシステムIDとゲームシステム名の一覧
+      properties:
+        names:
+          type: array
+          description: ゲームシステムIDとゲームシステム名の組の配列
+          items:
+            $ref: '#/components/schemas/SystemIDName'
+          example:
+            - system: Alshard
+              name: アルシャード
+            - system: Cthulhu
+              name: クトゥルフ
+            - system: DiceBot
+              name: DiceBot
+            - system: DoubleCross
+              name: 'ダブルクロス2nd,3rd'
+            - system: DungeonsAndDoragons
+              name: ダンジョンズ＆ドラゴンズ
+            - system: Gorilla
+              name: ゴリラTRPG
+            - system: Gundog
+              name: ガンドッグ
+            - system: LogHorizon
+              name: ログ・ホライズン
+            - system: Nechronica
+              name: ネクロニカ
+            - system: SwordWorld2.0
+              name: ソードワールド2.0
+      required:
+        - names
+    SystemID:
+      type: string
+      title: SystemID
+      description: ゲームシステム名
+      example: Cthulhu
+    SystemName:
+      type: string
+      title: SystemName
+      description: ゲームシステム名
+      example: クトゥルフ
 tags:
   - name: generalInfo
     description: BCDice全体についての情報
