@@ -20,7 +20,7 @@ paths:
     get:
       summary: バージョン情報
       tags:
-        - generalInfo
+        - BCDice
       responses:
         '200':
           description: BCDiceのバージョンとBCDice APIサーバのバージョン
@@ -34,7 +34,7 @@ paths:
     get:
       summary: ゲームシステムID一覧
       tags:
-        - generalInfo
+        - BCDice
       responses:
         '200':
           description: ゲームシステムIDの一覧
@@ -49,7 +49,7 @@ paths:
     get:
       summary: ゲームシステムIDとゲームシステム名の一覧
       tags:
-        - generalInfo
+        - BCDice
       responses:
         '200':
           description: ゲームシステムIDとゲームシステム名の一覧
@@ -158,5 +158,5 @@ components:
       description: ゲームシステム名
       example: クトゥルフ
 tags:
-  - name: generalInfo
-    description: BCDice全体についての情報
+  - name: BCDice
+    description: BCDiceの呼び出し
