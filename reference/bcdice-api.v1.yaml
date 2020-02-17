@@ -57,7 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SystemIDNameList'
-      operationId: get-names
+      operationId: list-names
       description: ゲームシステムIDとゲームシステム名の一覧を返します。
     parameters: []
 components:
